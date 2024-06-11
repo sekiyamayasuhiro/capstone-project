@@ -1,1 +1,5 @@
 /* TODO: Add sitewide styles */
+* {
+    max-width: 1200px;
+    margin: 0 auto;
+}
