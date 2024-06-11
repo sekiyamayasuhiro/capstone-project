@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import homepagelinkpic1 from "../../../public/homepagelinkpic1.png";
+import homepagelinkpic2 from "../../../public/homepagelinkpic2.png";
+import homepagelinkpic3 from "../../../public/homepagelinkpic3.png";
 import "./HomePage.css";
 
 function HomePage() {
+    const navigate = useNavigate();
     // Array of cycling homepage images
     const homePageImages = [
         "https://cdn.nba.com/manage/2023/06/jokic-murray061223.jpg",
@@ -51,9 +56,43 @@ function HomePage() {
                 </div>
             </section>
             <section className="homepage-bottom-section">
-                <div>Image Link 1</div>
-                <div>Image Link 2</div>
-                <div>Image Link 3</div>
+                <div>
+                    <a
+                        href="/testing"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate("/testing");
+                        }}
+                    >
+                        <img src={homepagelinkpic1} alt="Link1" />
+                    </a>
+                    <p>Pic Link Description 1</p>
+                </div>
+
+                <div>
+                    <a
+                        href="/testing"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate("/testing");
+                        }}
+                    >
+                        <img src={homepagelinkpic2} alt="Link2" />
+                    </a>
+                    <p>Pic Link Description 2</p>
+                </div>
+                <div>
+                    <a
+                        href="/testing"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate("/testing");
+                        }}
+                    >
+                        <img src={homepagelinkpic3} alt="Link3" />
+                    </a>
+                    <p>Pic Link Description 3</p>
+                </div>
             </section>
             <footer className="homepage-footer">
                 <div>© 2024 MyFantasyNotebook</div>
