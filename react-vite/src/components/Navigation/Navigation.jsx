@@ -1,19 +1,19 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import logo from "../../../public/icon.png";
 import "./Navigation.css";
 
 function Navigation() {
     return (
         <div className="navigation-container">
-            <ul>
-                <li>
-                    <NavLink to="/">Home</NavLink>
-                </li>
-
-                <li>
-                    <ProfileButton />
-                </li>
-            </ul>
+            <div className="navigation-icon-container">
+                <NavLink to="/">
+                    <img src={logo} alt="site logo" />
+                </NavLink>
+            </div>
+            <div className="navigation-profile-container">
+                <ProfileButton />
+            </div>
         </div>
     );
 }

@@ -1,8 +1,40 @@
 .profile-dropdown {
     position: absolute;
     background-color: pink;
+    right: 60px;
+    top: 60px;
+    z-index: 1000;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 .navigation-container {
-    height: 100px;
     border-bottom: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+}
+
+.navigation-icon-container,
+.navigation-profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.navigation-icon-container img {
+    height: 75px;
+    width: auto;
+}
+
+.navigation-profile-container {
+    justify-content: flex-end;
+}
+
+.profile-button {
+    height: 25px;
+    width: auto;
 }
