@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .leagues import seed_leagues, undo_leagues
+from .teams import seed_teams, undo_teams
 
 from app.models.db import db, environment, SCHEMA
 
@@ -19,8 +20,10 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_leagues()
+        undo_teams()
     seed_users()
     seed_leagues()
+    seed_teams()
     # Add other seed functions here
 
 
@@ -29,4 +32,5 @@ def seed():
 def undo():
     undo_users()
     undo_leagues()
+    undo_teams()
     # Add other undo functions here
