@@ -15,7 +15,7 @@ def seed_teams():
         ),
         Team(
             league_id=1,
-            name='Walker Kessler Ranger',
+            name='Walker Kessler',
             note='This is Matt... I hate him.',
             team_img='https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/026.png',
             wins=91,
