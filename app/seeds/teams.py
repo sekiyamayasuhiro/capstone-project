@@ -51,4 +51,5 @@ def undo_teams():
         db.session.execute(f"TRUNCATE table {SCHEMA}.teams RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM teams"))
+
     db.session.commit()
