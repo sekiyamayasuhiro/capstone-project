@@ -8,7 +8,7 @@ class League(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    name = db.Column(db.String(20), nullable=False)
+    name = db.Column(db.String(30), nullable=False)
     note = db.Column(db.String(100), nullable=False)
     league_img = db.Column(db.String, nullable=False)
     scoring_type = db.Column(db.String, nullable=False)

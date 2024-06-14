@@ -24,7 +24,7 @@ def upgrade():
     op.create_table('leagues',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=20), nullable=False),
+    sa.Column('name', sa.String(length=30), nullable=False),
     sa.Column('note', sa.String(length=100), nullable=False),
     sa.Column('league_img', sa.String(), nullable=False),
     sa.Column('scoring_type', sa.String(), nullable=False),
