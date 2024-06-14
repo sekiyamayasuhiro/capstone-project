@@ -8,7 +8,7 @@ class Team(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     league_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('leagues.id')), nullable=False)
-    name = db.Column(db.String(20), nullable=False)
+    name = db.Column(db.String(30), nullable=False)
     note = db.Column(db.String(100), nullable=False)
     team_img = db.Column(db.String, nullable=False)
     wins = db.Column(db.Integer, nullable=False, default=0)
