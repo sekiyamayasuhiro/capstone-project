@@ -34,6 +34,12 @@ function LoginFormModal() {
         setPassword("password");
     };
 
+    //Second user login
+    const demoUserTwo = () => {
+        setEmail("marnie@aa.io");
+        setPassword("password");
+    };
+
     return (
         <>
             <h1>Log In</h1>
@@ -60,6 +66,7 @@ function LoginFormModal() {
                 {errors.password && <p>{errors.password}</p>}
                 <button type="submit">Log In</button>
                 <button onClick={demoUser}>Demo User</button>
+                <button onClick={demoUserTwo}>Demo User 2</button>
             </form>
         </>
     );

@@ -4,6 +4,7 @@ import SignupFormPage from "../components/SignupFormPage";
 import Layout from "./Layout";
 import HomePage from "../components/HomePage";
 import TestingPage from "../components/TestingPage";
+import LeagueIndex from "../components/League/LeagueIndex";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
             {
                 path: "testing",
                 element: <TestingPage />,
+            },
+            {
+                path: "leagues",
+                element: <LeagueIndex />,
             },
         ],
     },
