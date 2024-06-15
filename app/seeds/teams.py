@@ -15,8 +15,8 @@ def seed_teams():
         ),
         Team(
             league_id=1,
-            name='Walker Kessler',
-            note='This is Matt... I hate him.',
+            name='Walker Kessler Ranger',
+            note='This is Matt... He is so tall...',
             team_img='https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/026.png',
             wins=91,
             losses=79,
@@ -32,7 +32,7 @@ def seed_teams():
             ties=3
         ),
         Team(
-            league_id=2,
+            league_id=1,
             name='Pandamonium',
             note='Janine relies on luck and it works...',
             team_img='https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/028.png',
