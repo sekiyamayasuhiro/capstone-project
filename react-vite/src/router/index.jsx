@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-// import LoginFormPage from "../components/LoginFormPage";
-// import SignupFormPage from "../components/SignupFormPage";
 import Layout from "./Layout";
 import HomePage from "../components/HomePage";
 import TestingPage from "../components/TestingPage";
 import LeagueIndex from "../components/League/LeagueIndex";
+import LeagueDetails from "../components/League/LeagueDetails";
 
 export const router = createBrowserRouter([
     {
@@ -14,14 +13,6 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <HomePage />,
             },
-            // {
-            //     path: "login",
-            //     element: <LoginFormPage />,
-            // },
-            // {
-            //     path: "signup",
-            //     element: <SignupFormPage />,
-            // },
             {
                 path: "testing",
                 element: <TestingPage />,
@@ -29,6 +20,10 @@ export const router = createBrowserRouter([
             {
                 path: "leagues",
                 element: <LeagueIndex />,
+            },
+            {
+                path: "leagues/:leagueId",
+                element: <LeagueDetails />,
             },
         ],
     },

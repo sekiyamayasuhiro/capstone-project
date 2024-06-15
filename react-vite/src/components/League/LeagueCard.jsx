@@ -1,21 +1,29 @@
 import { useModal } from "../../context/Modal";
+import { useNavigate } from "react-router-dom";
 import EditLeagueFormModal from "./EditLeagueFormModal";
 import DeleteLeagueModal from "./DeleteLeagueModal";
 import "./LeagueCard.css";
 
 const LeagueCard = ({ league }) => {
     const { setModalContent } = useModal();
+    const navigate = useNavigate();
 
-    const handleEdit = () => {
+    const toLeagueDetails = () => {
+        navigate(`/leagues/${league.id}`);
+    };
+
+    const handleEdit = (e) => {
+        e.stopPropagation();
         setModalContent(<EditLeagueFormModal league={league} />);
     };
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.stopPropagation();
         setModalContent(<DeleteLeagueModal leagueId={league.id} />);
     };
 
     return (
-        <div className="league-card">
+        <div className="league-card" onClick={toLeagueDetails}>
             <img
                 src={league.league_img}
                 alt={league.name}
