@@ -34,6 +34,9 @@ export const createLeague = (leagueData) => async (dispatch) => {
         const res = await csrfFetch("/api/leagues/", {
             method: "POST",
             body: JSON.stringify(leagueData),
+            headers: {
+                "Content-Type": "application/json",
+            },
         });
         const data = await res.json();
         if (res.ok) {
@@ -52,6 +55,9 @@ export const updateLeagueDetails =
             const res = await csrfFetch(`/api/leagues/${leagueId}`, {
                 method: "PUT",
                 body: JSON.stringify(leagueData),
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
             const data = await res.json();
             if (res.ok) {
