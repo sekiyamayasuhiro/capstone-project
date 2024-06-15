@@ -19,7 +19,7 @@ const EditLeagueFormModal = ({ league }) => {
         const errors = {};
 
         if (!name) errors.name = "League name is required.";
-        if (name.length > 20)
+        if (name.length > 30)
             errors.name = "League name cannot exceed 20 characters.";
         if (!note) errors.note = "Note is required.";
         if (note.length > 100)

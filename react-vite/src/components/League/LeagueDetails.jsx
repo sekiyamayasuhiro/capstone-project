@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import TeamIndex from "../Team/TeamIndex";
 
 const LeagueDetails = () => {
     const { leagueId } = useParams();
@@ -29,7 +30,11 @@ const LeagueDetails = () => {
                 </div>
             </div>
             <div className="league-details-lower">
-                <h1>TEAMS GO HERE:</h1>
+                <TeamIndex
+                    leagueId={leagueId}
+                    maxPlayers={league.max_players}
+                    league={league}
+                />
             </div>
         </div>
     );

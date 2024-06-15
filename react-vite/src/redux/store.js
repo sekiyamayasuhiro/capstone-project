@@ -7,10 +7,12 @@ import {
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import leagueReducer from "./league";
+import teamReducer from "./team";
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     leagueState: leagueReducer,
+    teamState: teamReducer,
 });
 
 let enhancer;
