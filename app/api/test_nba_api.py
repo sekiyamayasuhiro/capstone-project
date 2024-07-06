@@ -158,22 +158,22 @@ from nba_api.stats.endpoints import playercareerstats
 
 # career_totals(201939)
 
-def career_totals(player_id):
-    try:
-        player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
-        career_stats = player_stats['CareerTotalsRegularSeason'][0]  # Directly accessing the first entry
-        games_played = career_stats['GP']
+# def career_totals(player_id):
+#     try:
+#         player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
+#         career_stats = player_stats['CareerTotalsRegularSeason'][0]  # Directly accessing the first entry
+#         games_played = career_stats['GP']
 
-        # Calculate per-game stats only if games played is greater than zero
-        if games_played > 0:
-            career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
-            career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
-            career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
-            career_stats['BPG'] = round(career_stats['BLK'] / games_played, 1)
-            career_stats['TPG'] = round(career_stats['TOV'] / games_played, 1)
-            career_stats['PPG'] = round(career_stats['PTS'] / games_played, 1)
-        return print(career_stats)
-    except Exception as e:
-        return print({"error": str(e)})
+#         # Calculate per-game stats only if games played is greater than zero
+#         if games_played > 0:
+#             career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
+#             career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
+#             career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
+#             career_stats['BPG'] = round(career_stats['BLK'] / games_played, 1)
+#             career_stats['TPG'] = round(career_stats['TOV'] / games_played, 1)
+#             career_stats['PPG'] = round(career_stats['PTS'] / games_played, 1)
+#         return print(career_stats)
+#     except Exception as e:
+#         return print({"error": str(e)})
 
-career_totals(201939)
+# career_totals(201939)

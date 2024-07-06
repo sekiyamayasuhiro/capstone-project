@@ -18,7 +18,8 @@ class Team(db.Model):
     updated_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     # Relationships
-    league = db.relationship('League', back_populates='teams')
+    league = db.relationship('League', back_populates='team')
+    roster = db.relationship('Roster', back_populates='team')
 
     def to_dict(self):
         return {
