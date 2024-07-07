@@ -5,16 +5,50 @@ from flask_login import login_required, current_user
 roster_routes = Blueprint('rosters', __name__)
 
 # add player to roster
+# @roster_routes.route('/teams/<int:team_id>/roster', methods=['POST'])
+# @login_required
+# def add_player_to_roster(team_id):
+#     print("HELLO WORLD!")
+#     # player_id = request.json.get('player_id')
+#     data = request.get_json()
+#     player_id = data["player_id"]
+#     full_name = data["full_name"]
+
+#     team = Team.query.get(team_id)
+#     player = Player.query.get(player_id)
+#     # if not team or not player:
+#     #     return jsonify({"error": "Team or player not found"}), 404
+#     if not team:
+#         return jsonify({"error": "Team not found"}), 404
+
+#     if team.league.user_id != current_user.id:
+#         return jsonify({"error": "Not authorized"}), 403
+
+#     existing_entry = Roster.query.join(Team).filter(Team.league_id == team.league_id, Roster.player_id == player_id).first()
+
+#     if existing_entry:
+#         return jsonify({"error": "Player already on a team in this league"}), 409
+#     new_player = Player(nba_player_id=player_id, full_name=full_name, is_active=True)
+#     db.session.add(new_player)
+#     new_entry = Roster(team_id=team_id, player_id=player_id)
+#     db.session.add(new_entry)
+#     db.session.commit()
+#     return jsonify(new_entry.to_dict()), 201
+# add player to roster
 @roster_routes.route('/teams/<int:team_id>/roster', methods=['POST'])
 @login_required
 def add_player_to_roster(team_id):
     print("HELLO WORLD!")
-    player_id = request.json.get('player_id')
+    # player_id = request.json.get('player_id')
+    data = request.get_json()
+    player_id = data["player_id"]
 
     team = Team.query.get(team_id)
     player = Player.query.get(player_id)
-    if not team or not player:
-        return jsonify({"error": "Team or player not found"}), 404
+    # if not team or not player:
+    #     return jsonify({"error": "Team or player not found"}), 404
+    if not team:
+        return jsonify({"error": "Team not found"}), 404
 
     if team.league.user_id != current_user.id:
         return jsonify({"error": "Not authorized"}), 403
@@ -27,6 +61,7 @@ def add_player_to_roster(team_id):
     db.session.add(new_entry)
     db.session.commit()
     return jsonify(new_entry.to_dict()), 201
+
 
 # remove player from roster
 @roster_routes.route('/teams/<int:team_id>/roster/<int:player_id>', methods=['DELETE'])

@@ -36,12 +36,12 @@ from nba_api.stats.endpoints import playercareerstats
 # print(test_paolo)
 
 ###
-# query = "stephen curry"
+query = "harden"
 
-# titled_name = query.title()
+titled_name = query.title()
 
-# find_player_by_full_name = players.find_players_by_full_name(titled_name)
-# active_players = [player for player in find_player_by_full_name if player['is_active']]
+find_player_by_full_name = players.find_players_by_full_name(titled_name)
+active_players = [player for player in find_player_by_full_name if player['is_active']]
 
 # if not active_players:
 #     print("No active players found")
@@ -52,6 +52,7 @@ from nba_api.stats.endpoints import playercareerstats
 #     }
 
 # print(first_active_player)
+print(active_players)
 
 ###
 # player_id = 201939
