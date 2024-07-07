@@ -35,7 +35,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(league_routes, url_prefix='/api/leagues')
 app.register_blueprint(team_routes, url_prefix='/api/teams')
 app.register_blueprint(player_routes, url_prefix='/api/players')
-app.register_blueprint(roster_routes, url_prefix='/api/roster')
+app.register_blueprint(roster_routes, url_prefix='/api/rosters')
 db.init_app(app)
 Migrate(app, db)
 

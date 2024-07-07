@@ -19,12 +19,12 @@ def search_players():
     if not active_players:
         return jsonify({"message": "No active players found"}), 404
 
-    first_active_player = {
-        'id': active_players[0]['id'],
-        'full_name': active_players[0]['full_name']
-    }
+    # first_active_player = {
+    #     'id': active_players[0]['id'],
+    #     'full_name': active_players[0]['full_name']
+    # }
 
-    return jsonify(first_active_player), 200
+    return jsonify(active_players), 200
 
 # get career totals of a player
 @player_routes.route('/stats/career/<int:player_id>', methods=['GET'])
