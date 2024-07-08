@@ -30,8 +30,11 @@ export const fetchPlayers = (name) => async (dispatch) => {
 
 export const addPlayerToTeamRoster = (teamId, playerId) => async (dispatch) => {
     console.log(`/api/rosters/teams/${teamId}/roster`);
+    console.log(playerId);
 
     try {
+        console.log(playerId);
+
         const res = await csrfFetch(`/api/rosters/teams/${teamId}/roster`, {
             method: "POST",
             body: JSON.stringify({ player_id: playerId }),

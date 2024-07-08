@@ -17,7 +17,8 @@ const TeamDetails = () => {
 
     const handlePlayerSelect = (player) => {
         console.log("Adding player to team:", teamId, "Player ID:", player.id);
-        dispatch(addPlayerToTeamRoster(teamId, player.id));
+        dispatch(addPlayerToTeamRoster(teamId, player.id, player.full_name));
+        //??? added player.full_name
     };
 
     if (!team) return <h1>Loading...</h1>;

@@ -13,7 +13,7 @@ def seed_rosters():
             player_id=2
         ),
         Roster(
-            team_id=2,
+            team_id=1,
             player_id=3
         ),
     ]

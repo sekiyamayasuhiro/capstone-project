@@ -19,11 +19,6 @@ def search_players():
     if not active_players:
         return jsonify({"message": "No active players found"}), 404
 
-    # first_active_player = {
-    #     'id': active_players[0]['id'],
-    #     'full_name': active_players[0]['full_name']
-    # }
-
     return jsonify(active_players), 200
 
 # get career totals of a player

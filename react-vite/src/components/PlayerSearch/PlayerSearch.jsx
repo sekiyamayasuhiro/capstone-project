@@ -29,7 +29,7 @@ const PlayerSearch = ({ onPlayerSelect }) => {
             <ul className="suggestions-list">
                 {players.map((player) => (
                     <li key={player.id} onClick={() => onPlayerSelect(player)}>
-                        {player.full_name}
+                        {player.full_name} {player.id}
                     </li>
                 ))}
             </ul>

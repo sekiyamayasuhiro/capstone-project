@@ -16,5 +16,9 @@ class Roster(db.Model):
     def to_dict(self):
         return {
             'team_id': self.team_id,
-            'player_id': self.player_id
+            'player_id': self.player_id,
+            'player': {
+                'nba_player_id': self.player.nba_player_id,
+                'full_name': self.player.full_name
+            }
         }

@@ -7,17 +7,14 @@ def seed_players():
         Player(
             nba_player_id=201939,
             full_name='Stephen Curry',
-            is_active=True
         ),
         Player(
             nba_player_id=2544,
             full_name='LeBron James',
-            is_active=True
         ),
         Player(
             nba_player_id=203999,
             full_name='Nikola Jokic',
-            is_active=True
         ),
     ]
 
