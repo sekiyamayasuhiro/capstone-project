@@ -59,20 +59,3 @@ def remove_player_from_roster(team_id, player_id):
     db.session.delete(roster_entry)
     db.session.commit()
     return jsonify({"message": "Player removed from roster"}), 200
-
-#######
-# Remove a player from a team's roster
-@roster_routes.route('/teams/<int:team_id>/roster/<int:player_id>', methods=['DELETE'])
-@login_required
-def remove_player_from_roster(team_id, player_id):
-    team = Team.query.get(team_id)
-    if not team or team.league.user_id != current_user.id:
-        return jsonify({"error": "Team not found or not authorized"}), 404
-
-    roster_entry = Roster.query.filter_by(team_id=team_id, player_id=player_id).first()
-    if not roster_entry:
-        return jsonify({"error": "Player not found on this team"}), 404
-
-    db.session.delete(roster_entry)
-    db.session.commit()
-    return jsonify({"message": "Player removed from roster"}), 200
