@@ -16,33 +16,39 @@ def get_roster(team_id):
     roster_list = [entry.player.to_dict() for entry in roster_entries]
     return jsonify(roster_list), 200
 
-# Add a player to a team's roster (and add to the db if does not exist)
+# add a player to a team's roster (and add to the db if does not exist)
 @roster_routes.route('/teams/<int:team_id>/roster', methods=['POST'])
 @login_required
 def add_player_to_roster(team_id):
-    team = Team.query.get(team_id)
-    if not team or team.league.user_id != current_user.id:
-        return jsonify({"error": "Team not found or not authorized"}), 404
+    # try:
+        team = Team.query.get(team_id)
+        if not team or team.league.user_id != current_user.id:
+            return jsonify({"error": "Team not found or not authorized"}), 404
 
-    player_data = request.get_json()
-    nba_player_id = player_data.get('nba_player_id')
-    #check is player exists, if not we add
-    player = Player.query.filter_by(nba_player_id=nba_player_id).first()
-    if not player:
+        player_data = request.get_json()
+        nba_player_id = player_data.get('id')
         full_name = player_data.get('full_name')
-        player = Player(nba_player_id=nba_player_id, full_name=full_name)
-        db.session.add(player)
+
+        # Check if player exists, if not add
+        player = Player.query.filter_by(nba_player_id=nba_player_id).first()
+        if not player:
+            player = Player(nba_player_id=nba_player_id, full_name=full_name)
+            db.session.add(player)
+            db.session.commit()
+
+        # Check for player on another team in this league
+        existing_roster_entry = Roster.query.join(Team).filter(Team.league_id == team.league_id, Roster.player_id == player.id).first()
+        if existing_roster_entry:
+            return jsonify({"error": "Player already on a team in this league"}), 409
+
+        new_roster_entry = Roster(team_id=team_id, player_id=player.id)
+        db.session.add(new_roster_entry)
         db.session.commit()
+        return jsonify(new_roster_entry.to_dict()), 201
 
-    #check for player on another team in this league
-    existing_roster_entry = Roster.query.join(Team).filter(Team.league_id == team.league_id, Roster.player_id == player.id).first()
-    if existing_roster_entry:
-        return jsonify({"error": "Player already on a team in this league"}), 409
+    # except Exception as e:
+    #     return jsonify({"error": str(e)}), 500
 
-    new_roster_entry = Roster(team_id=team_id, player_id=player.id)
-    db.session.add(new_roster_entry)
-    db.session.commit()
-    return jsonify(new_roster_entry.to_dict()), 201
 
 # remove player from roster
 @roster_routes.route('/teams/<int:team_id>/roster/<int:player_id>', methods=['DELETE'])

@@ -1,22 +1,30 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlayers } from "../../redux/player";
-import "./PlayerSearch.css";
+import { useNavigate } from "react-router-dom";
+import { searchPlayers } from "../../redux/player";
+// import "./GlobalSearchBar.css";
 
-const PlayerSearch = ({ onPlayerSelect }) => {
-    const dispatch = useDispatch();
+const GlobalSearchBar = () => {
     const [name, setName] = useState("");
-    const players = useSelector((state) => state.playerState.players);
-    const error = useSelector((state) => state.playerState.error);
+    const dispatch = useDispatch();
+    const players = useSelector(
+        (state) => state.playerState.searchResults || []
+    );
+    const navigate = useNavigate();
 
     const handleSearch = () => {
         if (name.trim()) {
-            dispatch(fetchPlayers(name));
+            dispatch(searchPlayers(name));
         }
     };
 
+    const handlePlayerSelect = (player) => {
+        console.log("Selected player:", player);
+        navigate(`/players/${player.id}`);
+    };
+
     return (
-        <div className="player-search-container">
+        <div className="global-search-bar">
             <input
                 type="text"
                 value={name}
@@ -25,10 +33,12 @@ const PlayerSearch = ({ onPlayerSelect }) => {
                 className="input-field"
             />
             <button onClick={handleSearch}>Search</button>
-            {error && <p>{error}</p>}
             <ul className="suggestions-list">
                 {players.map((player) => (
-                    <li key={player.id} onClick={() => onPlayerSelect(player)}>
+                    <li
+                        key={player.id}
+                        onClick={() => handlePlayerSelect(player)}
+                    >
                         {player.full_name} {player.id}
                     </li>
                 ))}
@@ -37,4 +47,4 @@ const PlayerSearch = ({ onPlayerSelect }) => {
     );
 };
 
-export default PlayerSearch;
+export default GlobalSearchBar;

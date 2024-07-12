@@ -8,12 +8,14 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import leagueReducer from "./league";
 import teamReducer from "./team";
+import rosterReducer from "./roster";
 import playerReducer from "./player";
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     leagueState: leagueReducer,
     teamState: teamReducer,
+    rosterState: rosterReducer,
     playerState: playerReducer,
 });
 

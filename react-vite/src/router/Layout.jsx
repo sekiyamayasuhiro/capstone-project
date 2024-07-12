@@ -4,21 +4,23 @@ import { useDispatch } from "react-redux";
 import { ModalProvider, Modal } from "../context/Modal";
 import { thunkAuthenticate } from "../redux/session";
 import Navigation from "../components/Navigation/Navigation";
+import GlobalSearchBar from "../components/GlobalSearchBar/GlobalSearchBar";
 
 export default function Layout() {
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    dispatch(thunkAuthenticate()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+    const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false);
+    useEffect(() => {
+        dispatch(thunkAuthenticate()).then(() => setIsLoaded(true));
+    }, [dispatch]);
 
-  return (
-    <>
-      <ModalProvider>
-        <Navigation />
-        {isLoaded && <Outlet />}
-        <Modal />
-      </ModalProvider>
-    </>
-  );
+    return (
+        <>
+            <ModalProvider>
+                <Navigation />
+                <GlobalSearchBar />
+                {isLoaded && <Outlet />}
+                <Modal />
+            </ModalProvider>
+        </>
+    );
 }

@@ -22,6 +22,9 @@ from nba_api.stats.endpoints import playercareerstats
 ###
 # get_victor = players.find_players_by_full_name("Victor Wembanyama")
 # get_paolo = players.find_players_by_full_name("Paolo Banchero")
+get_steph1 = players.find_players_by_full_name("Stephen Curry")
+
+print(get_steph1)
 
 # print(get_victor)
 # print("XXXXXXXXXXXXXXXXXXXXXXXXXXXX-Divider")
@@ -36,12 +39,19 @@ from nba_api.stats.endpoints import playercareerstats
 # print(test_paolo)
 
 ###
-query = "harden"
+get_steph2 = players.find_player_by_id(201939)
 
-titled_name = query.title()
+print(get_steph2)
 
-find_player_by_full_name = players.find_players_by_full_name(titled_name)
-active_players = [player for player in find_player_by_full_name if player['is_active']]
+
+
+###
+# query = "harden"
+
+# titled_name = query.title()
+
+# find_player_by_full_name = players.find_players_by_full_name(titled_name)
+# active_players = [player for player in find_player_by_full_name if player['is_active']]
 
 # if not active_players:
 #     print("No active players found")
@@ -52,7 +62,7 @@ active_players = [player for player in find_player_by_full_name if player['is_ac
 #     }
 
 # print(first_active_player)
-print(active_players)
+# print(active_players)
 
 ###
 # player_id = 201939

@@ -1,77 +1,43 @@
 import { csrfFetch } from "./csrf";
 
 // action types
-const LOAD_PLAYERS = "players/LOAD_PLAYERS";
-const ADD_PLAYER_TO_ROSTER = "players/ADD_PLAYER_TO_ROSTER";
-const ERROR_PLAYER = "players/PLAYER_ERROR";
+const SEARCH_PLAYERS = "player/SEARCH_PLAYERS";
+const ERROR_PLAYER = "player/ERROR_PLAYER";
 
 // action creators
-const loadPlayers = (players) => ({ type: LOAD_PLAYERS, payload: players });
-const addPlayerToRoster = (player) => ({
-    type: ADD_PLAYER_TO_ROSTER,
-    payload: player,
+const setSearchResults = (searchResults) => ({
+    type: SEARCH_PLAYERS,
+    payload: searchResults,
 });
-const errorPlayer = (error) => ({ type: ERROR_PLAYER, payload: error });
+const playerError = (error) => ({ type: ERROR_PLAYER, payload: error });
 
-// Thunk to fetch players based on name
-export const fetchPlayers = (name) => async (dispatch) => {
+// thunks
+export const searchPlayers = (query) => async (dispatch) => {
     try {
-        const res = await csrfFetch(`/api/players/search?name=${name}`);
-        const data = await res.json();
+        const res = await csrfFetch(`/api/players/search?name=${query}`);
         if (res.ok) {
-            dispatch(loadPlayers(data));
+            const data = await res.json();
+            dispatch(setSearchResults(data));
         } else {
-            dispatch(errorPlayer(data.errors));
+            throw new Error("Failed to search players");
         }
     } catch (error) {
-        dispatch(errorPlayer("Failed to fetch players"));
+        dispatch(playerError(error.message));
     }
 };
 
-export const addPlayerToTeamRoster = (teamId, playerId) => async (dispatch) => {
-    console.log(`/api/rosters/teams/${teamId}/roster`);
-    console.log(playerId);
-
-    try {
-        console.log(playerId);
-
-        const res = await csrfFetch(`/api/rosters/teams/${teamId}/roster`, {
-            method: "POST",
-            body: JSON.stringify({ player_id: playerId }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        const data = await res.json();
-        if (res.ok) {
-            dispatch(addPlayerToRoster(data));
-        } else {
-            dispatch(errorPlayer(data.errors));
-        }
-    } catch (error) {
-        dispatch(errorPlayer("Failed to add player to roster"));
-    }
-};
-
-// Reducer
+// reducer
 const initialState = {
-    players: [],
+    searchResults: [],
     error: null,
 };
 
 const playerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_PLAYERS:
+        case SEARCH_PLAYERS:
             return {
                 ...state,
-                players: action.payload,
-                error: null,
-            };
-        case ADD_PLAYER_TO_ROSTER:
-            return {
-                ...state,
-                players: [...state.players, action.payload],
+                searchResults: action.payload,
                 error: null,
             };
         case ERROR_PLAYER:

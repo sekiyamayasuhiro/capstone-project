@@ -5,6 +5,7 @@ import TestingPage from "../components/TestingPage";
 import LeagueIndex from "../components/League/LeagueIndex";
 import LeagueDetails from "../components/League/LeagueDetails";
 import TeamDetails from "../components/Team";
+import PlayerDetails from "../components/PlayerDetails/PlayerDetails";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: "leagues/:leagueId/teams/:teamId",
                 element: <TeamDetails />,
+            },
+            {
+                path: "players/:playerId",
+                element: <PlayerDetails />,
             },
         ],
     },

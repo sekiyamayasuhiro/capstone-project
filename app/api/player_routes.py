@@ -85,3 +85,14 @@ def season_2023_24_totals(player_id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+# get player details by ID
+@player_routes.route('/<int:player_id>', methods=['GET'])
+def get_player_by_id(player_id):
+    try:
+        player = players.find_player_by_id(player_id)
+        if not player:
+            return jsonify({"error": "Player not found"}), 404
+        return jsonify(player), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
