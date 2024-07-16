@@ -31,6 +31,9 @@ def career_totals(player_id):
 
         if games_played > 0:
             career_stats['MPG'] = round(career_stats['MIN'] / games_played, 0)
+            career_stats['FG_PCT'] = round(career_stats['FG_PCT'], 3)
+            career_stats['FG3_PCT'] = round(career_stats['FG3_PCT'], 3)
+            career_stats['FT_PCT'] = round(career_stats['FT_PCT'], 3)
             career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
             career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
             career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)

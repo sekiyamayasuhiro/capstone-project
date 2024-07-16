@@ -64,6 +64,77 @@ const PlayerDetails = () => {
 
     if (error) return <div>{error}</div>;
 
+    const headerMap2Change = {
+        GP: "GP",
+        MPG: "MPG",
+        FGM: "FGM",
+        FGA: "FGA",
+        FG_PCT: "FG%",
+        FG3M: "FG3M",
+        FG3A: "FG3A",
+        FG3_PCT: "3P%",
+        FTM: "FTM",
+        FTA: "FTA",
+        FT_PCT: "FT%",
+        PTS: "PTS",
+        PPG: "PPG",
+        REB: "REB",
+        RPG: "RPG",
+        AST: "AST",
+        APG: "APG",
+        STL: "STL",
+        SPG: "SPG",
+        BLK: "BLK",
+        BPG: "BPG",
+        TOV: "TOV",
+        TPG: "TPG",
+    };
+
+    const dataTable = (data, headers) => (
+        <table>
+            <thead>
+                <tr>
+                    {headers.map((header, index) => (
+                        <th key={index}>{headerMap2Change[header]}</th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {headers.map((header, index) => (
+                        <td key={index}>{data[header]}</td>
+                    ))}
+                </tr>
+            </tbody>
+        </table>
+    );
+
+    const statTableHeaders = [
+        "GP",
+        "MPG",
+        "FGM",
+        "FGA",
+        "FG_PCT",
+        "FG3M",
+        "FG3A",
+        "FG3_PCT",
+        "FTM",
+        "FTA",
+        "FT_PCT",
+        "PTS",
+        "PPG",
+        "REB",
+        "RPG",
+        "AST",
+        "APG",
+        "STL",
+        "SPG",
+        "BLK",
+        "BPG",
+        "TOV",
+        "TPG",
+    ];
+
     return (
         <div className="player-details-container">
             <section className="player-details-upper">
@@ -92,7 +163,7 @@ const PlayerDetails = () => {
                             Current Season Stats ({seasonCurrentStats.SEASON_ID}
                             )
                         </h2>
-                        <p>GP: {seasonCurrentStats.GP}</p>
+                        {/* <p>GP: {seasonCurrentStats.GP}</p>
                         <p>MPG: {seasonCurrentStats.MPG}</p>
                         <p>FGM: {seasonCurrentStats.FGM}</p>
                         <p>FGA: {seasonCurrentStats.FGA}</p>
@@ -114,7 +185,8 @@ const PlayerDetails = () => {
                         <p>BLK: {seasonCurrentStats.BLK}</p>
                         <p>BPG: {seasonCurrentStats.BPG}</p>
                         <p>TOV: {seasonCurrentStats.TOV}</p>
-                        <p>TPG: {seasonCurrentStats.TPG}</p>
+                        <p>TPG: {seasonCurrentStats.TPG}</p> */}
+                        {dataTable(seasonCurrentStats, statTableHeaders)}
                     </div>
                 )}
             </section>
@@ -124,7 +196,7 @@ const PlayerDetails = () => {
                     seasonStats.map((season, index) => (
                         <div key={index}>
                             <h3>{season.SEASON_ID}</h3>
-                            <p>GP: {season.GP}</p>
+                            {/* <p>GP: {season.GP}</p>
                             <p>MPG: {season.MPG}</p>
                             <p>FGM: {season.FGM}</p>
                             <p>FGA: {season.FGA}</p>
@@ -146,7 +218,8 @@ const PlayerDetails = () => {
                             <p>BLK: {season.BLK}</p>
                             <p>BPG: {season.BPG}</p>
                             <p>TOV: {season.TOV}</p>
-                            <p>TPG: {season.TPG}</p>
+                            <p>TPG: {season.TPG}</p> */}
+                            {dataTable(season, statTableHeaders)}
                         </div>
                     ))}
             </section>
@@ -154,7 +227,7 @@ const PlayerDetails = () => {
                 <h2>Career Stats</h2>
                 {careerStats && (
                     <div>
-                        <p>GP: {careerStats.GP}</p>
+                        {/* <p>GP: {careerStats.GP}</p>
                         <p>MPG: {careerStats.MPG}</p>
                         <p>FGM: {careerStats.FGM}</p>
                         <p>FGA: {careerStats.FGA}</p>
@@ -176,7 +249,8 @@ const PlayerDetails = () => {
                         <p>BLK: {careerStats.BLK}</p>
                         <p>BPG: {careerStats.BPG}</p>
                         <p>TOV: {careerStats.TOV}</p>
-                        <p>TPG: {careerStats.TPG}</p>
+                        <p>TPG: {careerStats.TPG}</p> */}
+                        {dataTable(careerStats, statTableHeaders)}
                     </div>
                 )}
             </section>
