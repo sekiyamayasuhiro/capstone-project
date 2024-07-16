@@ -1,5 +1,5 @@
 from nba_api.stats.static import players
-from nba_api.stats.endpoints import playercareerstats
+from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
 
 # player_dict = players.get_players()
 # print(player_dict[:5])  # Display the first five players to check
@@ -22,9 +22,9 @@ from nba_api.stats.endpoints import playercareerstats
 ###
 # get_victor = players.find_players_by_full_name("Victor Wembanyama")
 # get_paolo = players.find_players_by_full_name("Paolo Banchero")
-get_steph1 = players.find_players_by_full_name("Stephen Curry")
+# get_steph1 = players.find_players_by_full_name("Stephen Curry")
 
-print(get_steph1)
+# print(get_steph1)
 
 # print(get_victor)
 # print("XXXXXXXXXXXXXXXXXXXXXXXXXXXX-Divider")
@@ -38,10 +38,16 @@ print(get_steph1)
 # print("XXXXXXXXXXXXXXXXXXXXXXXXXXXX-Divider")
 # print(test_paolo)
 
-###
-get_steph2 = players.find_player_by_id(201939)
+### common info
+# get_steph3 = commonplayerinfo.CommonPlayerInfo(player_id=201939).get_normalized_dict()
+# get_steph3_common = get_steph3['CommonPlayerInfo'][0]
+# print(get_steph3_common)
 
-print(get_steph2)
+
+# ###
+# get_steph2 = players.find_player_by_id(201939)
+
+# print(get_steph2)
 
 
 
@@ -105,6 +111,8 @@ print(get_steph2)
 #         season_data = [season for season in player_stats['SeasonTotalsRegularSeason'] if season['SEASON_ID'] == '2023-24']
 #         if not season_data:
 #             print("No data available for the 2023-24 season")
+#         print(player_stats['SeasonTotalsRegularSeason'][-1])
+#         print("XXXXXXXXXXXXXXXXXXXX")
 #         print(season_data[0])
 #     except Exception as e:
 #         print({"error": str(e)})
@@ -139,26 +147,26 @@ print(get_steph2)
 
 
 ###
-# def career_totals(player_id):
-#     try:
-#         player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
+def career_totals(player_id):
+    try:
+        player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
 
-#         career_stats = player_stats[0]
-#         games_played = career_stats['GP']
+        career_stats = player_stats['CareerTotalsRegularSeason'][0]
+        games_played = career_stats['GP']
 
-#         if games_played > 0:
-#             career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
-#             career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
-#             career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
-#             career_stats['BPG'] = round(career_stats['BLK'] / games_played, 1)
-#             career_stats['TPG'] = round(career_stats['TOV'] / games_played, 1)
-#             career_stats['PPG'] = round(career_stats['PTS'] / games_played, 1)
-#         print(career_stats)
+        if games_played > 0:
+            career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
+            career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
+            career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
+            career_stats['BPG'] = round(career_stats['BLK'] / games_played, 1)
+            career_stats['TPG'] = round(career_stats['TOV'] / games_played, 1)
+            career_stats['PPG'] = round(career_stats['PTS'] / games_played, 1)
+        print(career_stats)
 
-#     except Exception as e:
-#         print("ERROR")
+    except Exception as e:
+        print("ERROR")
 
-# career_totals(201939)
+career_totals(201939)
 
 # def career_totals(player_id):
 #     try:

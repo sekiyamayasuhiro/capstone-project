@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from nba_api.stats.static import players
-from nba_api.stats.endpoints import playercareerstats
+from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
 
 player_routes = Blueprint('players', __name__)
 
@@ -30,6 +30,7 @@ def career_totals(player_id):
         games_played = career_stats['GP']
 
         if games_played > 0:
+            career_stats['MPG'] = round(career_stats['MIN'] / games_played, 0)
             career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
             career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
             career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
@@ -51,6 +52,7 @@ def season_totals(player_id):
         for season in seasons_data:
             games_played = season['GP']
             if games_played > 0:
+                season['MPG'] = round(season['MIN'] / games_played, 0)
                 season['RPG'] = round(season['REB'] / games_played, 1)
                 season['APG'] = round(season['AST'] / games_played, 1)
                 season['SPG'] = round(season['STL'] / games_played, 1)
@@ -62,19 +64,24 @@ def season_totals(player_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# get 2023-24 season totals of a player
-@player_routes.route('/stats/2023-24/<int:player_id>', methods=['GET'])
+# get current season totals of a player
+# @player_routes.route('/stats/2023-24/<int:player_id>', methods=['GET'])
+@player_routes.route('/stats/current/<int:player_id>', methods=['GET'])
 def season_2023_24_totals(player_id):
     try:
         player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
-        season_data = [season for season in player_stats['SeasonTotalsRegularSeason'] if season['SEASON_ID'] == '2023-24']
+        # season_data = [season for season in player_stats['SeasonTotalsRegularSeason'] if season['SEASON_ID'] == '2023-24']
+        season_data = player_stats['SeasonTotalsRegularSeason'][-1]
         if not season_data:
             return jsonify({"error": "No data for the 2023-24 season"}), 404
 
-        stats = season_data[0]
+        # stats = season_data[0]
+        stats = season_data
+
         games_played = stats['GP']
 
         if games_played > 0:
+            stats['MPG'] = round(stats['MIN'] / games_played, 0)
             stats['RPG'] = round(stats['REB'] / games_played, 1)
             stats['APG'] = round(stats['AST'] / games_played, 1)
             stats['SPG'] = round(stats['STL'] / games_played, 1)
@@ -87,12 +94,24 @@ def season_2023_24_totals(player_id):
         return jsonify({"error": str(e)}), 500
 
 # get player details by ID
+# @player_routes.route('/<int:player_id>', methods=['GET'])
+# def get_player_by_id(player_id):
+#     try:
+#         player = players.find_player_by_id(player_id)
+#         if not player:
+#             return jsonify({"error": "Player not found"}), 404
+#         return jsonify(player), 200
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500
+
+# get common player details by ID
 @player_routes.route('/<int:player_id>', methods=['GET'])
-def get_player_by_id(player_id):
+def get_player_details_by_id(player_id):
     try:
-        player = players.find_player_by_id(player_id)
-        if not player:
+        player = commonplayerinfo.CommonPlayerInfo(player_id=player_id).get_normalized_dict()
+        playerDetails = player['CommonPlayerInfo'][0]
+        if not playerDetails:
             return jsonify({"error": "Player not found"}), 404
-        return jsonify(player), 200
+        return jsonify(playerDetails), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
