@@ -8,6 +8,9 @@ Create Date: 2024-07-06 15:43:35.027334
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = 'e8f2a701061d'
@@ -22,7 +25,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nba_player_id', sa.Integer(), nullable=False),
     sa.Column('full_name', sa.String(length=100), nullable=False),
-    sa.Column('is_active', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('nba_player_id')
     )
@@ -33,6 +35,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ),
     sa.PrimaryKeyConstraint('team_id', 'player_id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE players SET SCHEMA {SCHEMA};")
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE rosters SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
