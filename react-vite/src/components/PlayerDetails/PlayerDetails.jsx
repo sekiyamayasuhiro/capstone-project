@@ -20,128 +20,128 @@ const PlayerDetails = () => {
             }
         };
 
-        const fetchSeasonCurrentStats = async () => {
-            try {
-                const response = await fetch(
-                    `/api/players/stats/current/${playerId}`
-                );
-                const data = await response.json();
-                setSeasonCurrentStats(data);
-            } catch (err) {
-                setError("Failed to fetch current season stats.");
-            }
-        };
+        // const fetchSeasonCurrentStats = async () => {
+        //     try {
+        //         const response = await fetch(
+        //             `/api/players/stats/current/${playerId}`
+        //         );
+        //         const data = await response.json();
+        //         setSeasonCurrentStats(data);
+        //     } catch (err) {
+        //         setError("Failed to fetch current season stats.");
+        //     }
+        // };
 
-        const fetchSeasonStats = async () => {
-            try {
-                const response = await fetch(
-                    `/api/players/stats/season/${playerId}`
-                );
-                const data = await response.json();
-                setSeasonStats(data);
-            } catch (err) {
-                setError("Failed to fetch season stats.");
-            }
-        };
+        // const fetchSeasonStats = async () => {
+        //     try {
+        //         const response = await fetch(
+        //             `/api/players/stats/season/${playerId}`
+        //         );
+        //         const data = await response.json();
+        //         setSeasonStats(data);
+        //     } catch (err) {
+        //         setError("Failed to fetch season stats.");
+        //     }
+        // };
 
-        const fetchCareerStats = async () => {
-            try {
-                const response = await fetch(
-                    `/api/players/stats/career/${playerId}`
-                );
-                const data = await response.json();
-                setCareerStats(data);
-            } catch (err) {
-                setError("Failed to fetch career stats.");
-            }
-        };
+        // const fetchCareerStats = async () => {
+        //     try {
+        //         const response = await fetch(
+        //             `/api/players/stats/career/${playerId}`
+        //         );
+        //         const data = await response.json();
+        //         setCareerStats(data);
+        //     } catch (err) {
+        //         setError("Failed to fetch career stats.");
+        //     }
+        // };
 
         fetchPlayerData();
-        fetchSeasonCurrentStats();
-        fetchSeasonStats();
-        fetchCareerStats();
+        // fetchSeasonCurrentStats();
+        // fetchSeasonStats();
+        // fetchCareerStats();
     }, [playerId]);
 
     if (error) return <div>{error}</div>;
 
-    const headerMap2Change = {
-        GP: "GP",
-        MPG: "MPG",
-        FGM: "FGM",
-        FGA: "FGA",
-        FG_PCT: "FG%",
-        FG3M: "FG3M",
-        FG3A: "FG3A",
-        FG3_PCT: "3P%",
-        FTM: "FTM",
-        FTA: "FTA",
-        FT_PCT: "FT%",
-        PTS: "PTS",
-        PPG: "PPG",
-        REB: "REB",
-        RPG: "RPG",
-        AST: "AST",
-        APG: "APG",
-        STL: "STL",
-        SPG: "SPG",
-        BLK: "BLK",
-        BPG: "BPG",
-        TOV: "TOV",
-        TPG: "TPG",
-    };
+    // const headerMap2Change = {
+    //     GP: "GP",
+    //     MPG: "MPG",
+    //     FGM: "FGM",
+    //     FGA: "FGA",
+    //     FG_PCT: "FG%",
+    //     FG3M: "FG3M",
+    //     FG3A: "FG3A",
+    //     FG3_PCT: "3P%",
+    //     FTM: "FTM",
+    //     FTA: "FTA",
+    //     FT_PCT: "FT%",
+    //     PTS: "PTS",
+    //     PPG: "PPG",
+    //     REB: "REB",
+    //     RPG: "RPG",
+    //     AST: "AST",
+    //     APG: "APG",
+    //     STL: "STL",
+    //     SPG: "SPG",
+    //     BLK: "BLK",
+    //     BPG: "BPG",
+    //     TOV: "TOV",
+    //     TPG: "TPG",
+    // };
 
-    const dataTable = (data, headers) => (
-        <table>
-            <thead>
-                <tr>
-                    {headers.map((header, index) => (
-                        <th key={index}>{headerMap2Change[header]}</th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {headers.map((header, index) => (
-                        <td key={index}>{data[header]}</td>
-                    ))}
-                </tr>
-            </tbody>
-        </table>
-    );
+    // const dataTable = (data, headers) => (
+    //     <table>
+    //         <thead>
+    //             <tr>
+    //                 {headers.map((header, index) => (
+    //                     <th key={index}>{headerMap2Change[header]}</th>
+    //                 ))}
+    //             </tr>
+    //         </thead>
+    //         <tbody>
+    //             <tr>
+    //                 {headers.map((header, index) => (
+    //                     <td key={index}>{data[header]}</td>
+    //                 ))}
+    //             </tr>
+    //         </tbody>
+    //     </table>
+    // );
 
-    const statTableHeaders = [
-        "GP",
-        "MPG",
-        "FGM",
-        "FGA",
-        "FG_PCT",
-        "FG3M",
-        "FG3A",
-        "FG3_PCT",
-        "FTM",
-        "FTA",
-        "FT_PCT",
-        "PTS",
-        "PPG",
-        "REB",
-        "RPG",
-        "AST",
-        "APG",
-        "STL",
-        "SPG",
-        "BLK",
-        "BPG",
-        "TOV",
-        "TPG",
-    ];
+    // const statTableHeaders = [
+    //     "GP",
+    //     "MPG",
+    //     "FGM",
+    //     "FGA",
+    //     "FG_PCT",
+    //     "FG3M",
+    //     "FG3A",
+    //     "FG3_PCT",
+    //     "FTM",
+    //     "FTA",
+    //     "FT_PCT",
+    //     "PTS",
+    //     "PPG",
+    //     "REB",
+    //     "RPG",
+    //     "AST",
+    //     "APG",
+    //     "STL",
+    //     "SPG",
+    //     "BLK",
+    //     "BPG",
+    //     "TOV",
+    //     "TPG",
+    // ];
 
     return (
         <div className="player-details-container">
             <section className="player-details-upper">
-                {/* <h1>Player Details</h1> */}
+                <h1>Player Details</h1>
                 {playerData && (
                     <div>
-                        <h1>{playerData.DISPLAY_FIRST_LAST}</h1>
+                        <h2>{playerData.DISPLAY_FIRST_LAST}</h2>
                         <p>
                             Height: {playerData.HEIGHT} {"|"} Weight:{" "}
                             {playerData.WEIGHT}
@@ -156,14 +156,14 @@ const PlayerDetails = () => {
                     </div>
                 )}
             </section>
-            <section className="player-stats-section">
+            {/* <section className="player-stats-section">
                 {seasonCurrentStats && (
                     <div>
                         <h2>
                             Current Season Stats ({seasonCurrentStats.SEASON_ID}
                             )
                         </h2>
-                        {/* <p>GP: {seasonCurrentStats.GP}</p>
+                        <p>GP: {seasonCurrentStats.GP}</p>
                         <p>MPG: {seasonCurrentStats.MPG}</p>
                         <p>FGM: {seasonCurrentStats.FGM}</p>
                         <p>FGA: {seasonCurrentStats.FGA}</p>
@@ -185,18 +185,18 @@ const PlayerDetails = () => {
                         <p>BLK: {seasonCurrentStats.BLK}</p>
                         <p>BPG: {seasonCurrentStats.BPG}</p>
                         <p>TOV: {seasonCurrentStats.TOV}</p>
-                        <p>TPG: {seasonCurrentStats.TPG}</p> */}
+                        <p>TPG: {seasonCurrentStats.TPG}</p>
                         {dataTable(seasonCurrentStats, statTableHeaders)}
                     </div>
                 )}
-            </section>
-            <section className="player-stats-section">
+            </section> */}
+            {/* <section className="player-stats-section">
                 <h2>Season Stats</h2>
                 {seasonStats &&
                     seasonStats.map((season, index) => (
                         <div key={index}>
                             <h3>{season.SEASON_ID}</h3>
-                            {/* <p>GP: {season.GP}</p>
+                            <p>GP: {season.GP}</p>
                             <p>MPG: {season.MPG}</p>
                             <p>FGM: {season.FGM}</p>
                             <p>FGA: {season.FGA}</p>
@@ -218,16 +218,16 @@ const PlayerDetails = () => {
                             <p>BLK: {season.BLK}</p>
                             <p>BPG: {season.BPG}</p>
                             <p>TOV: {season.TOV}</p>
-                            <p>TPG: {season.TPG}</p> */}
+                            <p>TPG: {season.TPG}</p>
                             {dataTable(season, statTableHeaders)}
                         </div>
                     ))}
-            </section>
-            <section className="player-stats-section">
+            </section> */}
+            {/* <section className="player-stats-section">
                 <h2>Career Stats</h2>
                 {careerStats && (
                     <div>
-                        {/* <p>GP: {careerStats.GP}</p>
+                        <p>GP: {careerStats.GP}</p>
                         <p>MPG: {careerStats.MPG}</p>
                         <p>FGM: {careerStats.FGM}</p>
                         <p>FGA: {careerStats.FGA}</p>
@@ -249,11 +249,11 @@ const PlayerDetails = () => {
                         <p>BLK: {careerStats.BLK}</p>
                         <p>BPG: {careerStats.BPG}</p>
                         <p>TOV: {careerStats.TOV}</p>
-                        <p>TPG: {careerStats.TPG}</p> */}
+                        <p>TPG: {careerStats.TPG}</p>
                         {dataTable(careerStats, statTableHeaders)}
                     </div>
                 )}
-            </section>
+            </section> */}
         </div>
     );
 };
