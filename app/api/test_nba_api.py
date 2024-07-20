@@ -5,14 +5,16 @@ from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
 # print(player_dict[:5])  # Display the first five players to check
 
 ###
-# # Fetch the list of all players
-# player_dict = players.get_players()
+# Fetch the list of all players
+player_dict = players.get_players()
 
-# # Filter to get only active players
-# active_players = [player for player in player_dict if player['is_active']]
+# Filter to get only active players
+active_players = [player for player in player_dict if player['is_active']]
 
-# # Display the first five active players to check
-# print(active_players[:5])
+# Display the first five active players to check
+# print(active_players[:100])
+print(active_players)
+
 
 ###
 # player_active_dict = players.get_active_players()
@@ -147,26 +149,26 @@ from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
 
 
 ###
-def career_totals(player_id):
-    try:
-        player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
+# def career_totals(player_id):
+#     try:
+#         player_stats = playercareerstats.PlayerCareerStats(player_id=player_id).get_normalized_dict()
 
-        career_stats = player_stats['CareerTotalsRegularSeason'][0]
-        games_played = career_stats['GP']
+#         career_stats = player_stats['CareerTotalsRegularSeason'][0]
+#         games_played = career_stats['GP']
 
-        if games_played > 0:
-            career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
-            career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
-            career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
-            career_stats['BPG'] = round(career_stats['BLK'] / games_played, 1)
-            career_stats['TPG'] = round(career_stats['TOV'] / games_played, 1)
-            career_stats['PPG'] = round(career_stats['PTS'] / games_played, 1)
-        print(career_stats)
+#         if games_played > 0:
+#             career_stats['RPG'] = round(career_stats['REB'] / games_played, 1)
+#             career_stats['APG'] = round(career_stats['AST'] / games_played, 1)
+#             career_stats['SPG'] = round(career_stats['STL'] / games_played, 1)
+#             career_stats['BPG'] = round(career_stats['BLK'] / games_played, 1)
+#             career_stats['TPG'] = round(career_stats['TOV'] / games_played, 1)
+#             career_stats['PPG'] = round(career_stats['PTS'] / games_played, 1)
+#         print(career_stats)
 
-    except Exception as e:
-        print("ERROR")
+#     except Exception as e:
+#         print("ERROR")
 
-career_totals(201939)
+# career_totals(201939)
 
 # def career_totals(player_id):
 #     try:
