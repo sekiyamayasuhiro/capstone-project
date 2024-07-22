@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
     # Relationships
     league = db.relationship('League', back_populates='user', cascade="all, delete-orphan")
+    note = db.relationship('Note', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):

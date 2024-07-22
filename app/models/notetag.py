@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Roster(db.Model):
+class NoteTag(db.Model):
     __tablename__ = 'note_tags'
 
     if environment == "production":
