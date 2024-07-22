@@ -8,8 +8,8 @@ class Note(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    player_name = db.Column(db.String(255), nullable = False)
-    note_content = db.Column(db.Text, nullable = False)
+    player_name = db.Column(db.String(255), nullable=False)
+    note_content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
     updated_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
