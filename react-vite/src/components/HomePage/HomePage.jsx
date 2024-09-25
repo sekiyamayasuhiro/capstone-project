@@ -95,17 +95,22 @@ function HomePage() {
                 </div>
             </section>
             <footer className="homepage-footer">
-                <div>© 2024 MyFantasyNotebook</div>
+                <div>© 2024 Fantasy Basketball Notebook</div>
                 <div>
-                    <a href="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/143.png">
-                        About Me
+                    <a href="https://github.com/sekiyamayasuhiro/capstone-project">
+                        GitHub Repo
                     </a>
+                </div>
+                <div>
+                    <a href="https://sekiyamayasuhiro.github.io">About Me</a>
                 </div>
                 <div>
                     <a href="https://github.com/sekiyamayasuhiro">GitHub</a>
                 </div>
                 <div>
-                    <a href="mailto:sekiyamayasuhiro@gmail.com">Contact Me</a>
+                    <a href="http://www.linkedin.com/in/yasuhiro-sekiyama-86474a329">
+                        LinkedIn
+                    </a>
                 </div>
             </footer>
             <footer>
