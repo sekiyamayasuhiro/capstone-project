@@ -1,12 +1,54 @@
+.navigation-profile-container {
+    position: relative;
+    justify-content: flex-end;
+}
+
+.profile-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.profile-button svg {
+    font-size: 30px;
+    color: blue;
+}
+
+.profile-button:hover svg {
+    color: gold;
+}
+
 .profile-dropdown {
     position: absolute;
-    background-color: pink;
-    right: 60px;
-    top: 60px;
+    background-color: gold;
+    color: blue;
+    top: 120%;
+    left: 100;
     z-index: 1000;
     border-radius: 8px;
     padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-dropdown a {
+    text-decoration: none;
+    color: blue;
+}
+
+.profile-dropdown div {
+    padding: 5px 0;
+}
+
+.profile-dropdown div:nth-child(2) {
+    border-bottom: 3px solid blue;
+    margin-bottom: 5px;
+}
+
+.profile-dropdown div button {
+    background: none;
+    border-radius: 0%;
+    padding: 5;
+    cursor: pointer;
 }
 
 .navigation-container {
@@ -14,7 +56,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1300px;
 }
 
 .navigation-icon-container,
@@ -42,4 +83,21 @@
 .profile-button {
     height: 25px;
     width: auto;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons div {
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.auth-buttons div:hover {
+    background-color: gold;
 }

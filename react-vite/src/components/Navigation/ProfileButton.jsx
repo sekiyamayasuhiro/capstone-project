@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { thunkLogout } from "../../redux/session";
-import OpenModalMenuItem from "./OpenModalMenuItem";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 import { Link } from "react-router-dom";
 
 function ProfileButton() {
@@ -43,35 +40,21 @@ function ProfileButton() {
     return (
         <>
             <button onClick={toggleMenu} className="profile-button">
-                <FaUserCircle />
+                <FaBars />
             </button>
             {showMenu && (
-                <div className={"profile-dropdown"} ref={ulRef}>
-                    {user ? (
-                        <>
-                            <div>{user.username}</div>
-                            <div>{user.email}</div>
-                            <div>
-                                <Link to="/leagues">Leagues</Link>
-                            </div>
-                            <div>
-                                <button onClick={logout}>Log Out</button>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <OpenModalMenuItem
-                                itemText="Log In"
-                                onItemClick={closeMenu}
-                                modalComponent={<LoginFormModal />}
-                            />
-                            <OpenModalMenuItem
-                                itemText="Sign Up"
-                                onItemClick={closeMenu}
-                                modalComponent={<SignupFormModal />}
-                            />
-                        </>
-                    )}
+                <div className="profile-dropdown" ref={ulRef}>
+                    <div>Ready to ball {user.username}?</div>
+                    <div>{user.email}</div>
+                    <div>
+                        <Link to="/leagues">- Check Your Leagues</Link>
+                    </div>
+                    <div>
+                        <Link to="/testing">- Write Some Notes</Link>
+                    </div>
+                    <div>
+                        <button onClick={logout}>Log Out</button>
+                    </div>
                 </div>
             )}
         </>
