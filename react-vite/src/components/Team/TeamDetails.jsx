@@ -6,6 +6,7 @@ import { fetchRoster, addPlayer } from "../../redux/roster";
 import { useModal } from "../../context/Modal";
 import PlayerSearch from "./PlayerSearch";
 import DeletePlayerModal from "./DeletePlayerModal";
+import "./TeamDetails.css";
 
 const TeamDetails = () => {
     const { leagueId, teamId } = useParams();
