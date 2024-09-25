@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { searchPlayers } from "../../redux/player";
+import { searchPlayers, clearSearchResults } from "../../redux/player";
 import "./GlobalSearchBar.css";
 
 const GlobalSearchBar = () => {
@@ -20,6 +20,8 @@ const GlobalSearchBar = () => {
 
     const handlePlayerSelect = (player) => {
         console.log("Selected player:", player);
+        setName("");
+        dispatch(clearSearchResults());
         navigate(`/players/${player.id}`);
     };
 

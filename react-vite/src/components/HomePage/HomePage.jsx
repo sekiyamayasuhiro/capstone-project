@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { FaGithub, FaLinkedin, FaUser } from "react-icons/fa";
+import { useModal } from "../../context/Modal";
+import LoginFormModal from "../LoginFormModal";
 import "./HomePage.css";
 
 function HomePage() {
     const navigate = useNavigate();
+    const sessionUser = useSelector((state) => state.session.user);
+    const { setModalContent } = useModal();
+
     // Array of cycling homepage images
     const homePageImages = [
         "https://cdn.nba.com/manage/2023/06/jokic-murray061223.jpg",
@@ -27,6 +33,15 @@ function HomePage() {
         return () => clearInterval(intervalId);
     }, [homePageImages.length]);
 
+    const handleProtectedNavigation = (e, path) => {
+        e.preventDefault();
+        if (sessionUser) {
+            navigate(path);
+        } else {
+            setModalContent(<LoginFormModal redirectPath={path} />);
+        }
+    };
+
     return (
         <div className="homepage-container">
             <section className="homepage-top-section">
@@ -44,10 +59,9 @@ function HomePage() {
                 <div>
                     <a
                         href="/leagues"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            navigate("/leagues");
-                        }}
+                        onClick={(e) =>
+                            handleProtectedNavigation(e, "/leagues")
+                        }
                     >
                         <img src="/homepagelinkpic1.png" alt="Link1" />
                     </a>
@@ -57,10 +71,9 @@ function HomePage() {
                 <div>
                     <a
                         href="/testing"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            navigate("/testing");
-                        }}
+                        onClick={(e) =>
+                            handleProtectedNavigation(e, "/testing")
+                        }
                     >
                         <img src="/homepagelinkpic2.png" alt="Link2" />
                     </a>
