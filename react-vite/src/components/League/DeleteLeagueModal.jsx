@@ -13,9 +13,15 @@ const DeleteLeagueModal = ({ leagueId }) => {
 
     return (
         <div className="delete-league-modal">
-            <h2>DOES THIS LEAGUE MEAN NOTHING TO YOU???</h2>
-            <button onClick={handleDelete}>Confirm DOOM</button>
-            <button onClick={closeModal}>Cancel</button>
+            <h1>DOES THIS LEAGUE MEAN NOTHING TO YOU???</h1>
+            <div className="form-group-buttons">
+                <button className="confirm-button" onClick={handleDelete}>
+                    Confirm DOOM
+                </button>
+                <button className="cancel-button" onClick={closeModal}>
+                    Cancel
+                </button>
+            </div>
         </div>
     );
 };

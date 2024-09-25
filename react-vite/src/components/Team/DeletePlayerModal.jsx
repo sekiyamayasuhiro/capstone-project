@@ -13,9 +13,15 @@ const DeletePlayerModal = ({ teamId, playerId }) => {
 
     return (
         <div className="delete-player-modal">
-            <h2>Are you sure you want to remove this player?</h2>
-            <button onClick={handleDelete}>Confirm</button>
-            <button onClick={closeModal}>Cancel</button>
+            <h1>Are you sure you want to remove this player?</h1>
+            <div className="form-group-buttons">
+                <button className="confirm-button" onClick={handleDelete}>
+                    Confirm
+                </button>
+                <button className="cancel-button" onClick={closeModal}>
+                    Cancel
+                </button>
+            </div>
         </div>
     );
 };

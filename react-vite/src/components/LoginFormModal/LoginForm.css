@@ -54,3 +54,39 @@ form p {
     font-size: 1rem;
     margin-top: -10px;
 }
+
+/* Delete Related */
+
+.form-group-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.confirm-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.confirm-button:hover {
+    background-color: black;
+}
+
+.cancel-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.cancel-button:hover {
+    background-color: gold;
+}
