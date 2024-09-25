@@ -57,7 +57,7 @@ const EditLeagueFormModal = ({ league }) => {
             <form onSubmit={handleSubmit}>
                 <h1>Edit League</h1>
                 <div className="form-group-name">
-                    <label>League Name</label>
+                    <label>League Name:</label>
                     <input
                         type="text"
                         value={name}
@@ -69,7 +69,7 @@ const EditLeagueFormModal = ({ league }) => {
                     )}
                 </div>
                 <div className="form-group-note">
-                    <label>Note</label>
+                    <label>Note:</label>
                     <textarea
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
@@ -80,7 +80,7 @@ const EditLeagueFormModal = ({ league }) => {
                     )}
                 </div>
                 <div className="form-group-image">
-                    <label>League Image URL</label>
+                    <label>League Image URL:</label>
                     <input
                         type="text"
                         value={leagueImg}
@@ -94,7 +94,7 @@ const EditLeagueFormModal = ({ league }) => {
                     )}
                 </div>
                 <div className="form-group-scoring-type">
-                    <label>Scoring Type</label>
+                    <label>Scoring Type:</label>
                     <select
                         value={scoringType}
                         onChange={(e) => setScoringType(e.target.value)}
@@ -106,7 +106,7 @@ const EditLeagueFormModal = ({ league }) => {
                     </select>
                 </div>
                 <div className="form-group-max-players">
-                    <label>Max Players</label>
+                    <label>Max Players:</label>
                     <select
                         value={maxPlayers}
                         onChange={(e) =>
