@@ -34,12 +34,6 @@ const LeagueIndex = () => {
 
     return (
         <div className="league-index-container">
-            <div className="league-index-section">
-                {leagues &&
-                    leagues.map((league) => (
-                        <LeagueCard key={league.id} league={league} />
-                    ))}
-            </div>
             <div className="league-index-create">
                 {leagues && leagues.length <= 2 && (
                     <button
@@ -49,6 +43,12 @@ const LeagueIndex = () => {
                         Create New League
                     </button>
                 )}
+            </div>
+            <div className="league-index-section">
+                {leagues &&
+                    leagues.map((league) => (
+                        <LeagueCard key={league.id} league={league} />
+                    ))}
             </div>
         </div>
     );
