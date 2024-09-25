@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import homepagelinkpic1 from "../../../public/homepagelinkpic1.png";
-import homepagelinkpic2 from "../../../public/homepagelinkpic2.png";
-import homepagelinkpic3 from "../../../public/homepagelinkpic3.png";
+import { FaGithub, FaLinkedin, FaUser } from "react-icons/fa";
 import "./HomePage.css";
 
 function HomePage() {
@@ -32,41 +30,28 @@ function HomePage() {
     return (
         <div className="homepage-container">
             <section className="homepage-top-section">
+                <div className="homepage-text-overlay">
+                    This is where WE win.
+                </div>
                 <div className="homepage-top-section-left">
                     <img
                         src={homePageImages[currentHomePageImageIndex]}
                         alt="homepage picture"
                     />
                 </div>
-                <div className="homepage-top-section-right">
-                    <h1>Welcome to MyFantasyNotebook!</h1>
-                    <p>
-                        Explore the ultimate fantasy basketball experience with
-                        MyFantasyNotebook, where up-to-date NBA data,
-                        customizable leagues, and advanced scouting tools come
-                        together to elevate your strategy. Create and manage
-                        your leagues and teams, enjoy detailed stats and player
-                        comparisons, and enrich your fantasy sports journey.
-                        Enhance your engagement by personalizing player profiles
-                        with scouting reports and adding memorable images to
-                        your gallery! Start building your championship team
-                        today and experience fantasy basketball like never
-                        before!
-                    </p>
-                </div>
             </section>
             <section className="homepage-bottom-section">
                 <div>
                     <a
-                        href="/testing"
+                        href="/leagues"
                         onClick={(e) => {
                             e.preventDefault();
-                            navigate("/testing");
+                            navigate("/leagues");
                         }}
                     >
-                        <img src={homepagelinkpic1} alt="Link1" />
+                        <img src="/homepagelinkpic1.png" alt="Link1" />
                     </a>
-                    <p>Pic Link Description 1</p>
+                    <p>MANAGE LEAGUES</p>
                 </div>
 
                 <div>
@@ -77,9 +62,9 @@ function HomePage() {
                             navigate("/testing");
                         }}
                     >
-                        <img src={homepagelinkpic2} alt="Link2" />
+                        <img src="/homepagelinkpic2.png" alt="Link2" />
                     </a>
-                    <p>Pic Link Description 2</p>
+                    <p>WRITE NOTES</p>
                 </div>
                 <div>
                     <a
@@ -89,27 +74,26 @@ function HomePage() {
                             navigate("/testing");
                         }}
                     >
-                        <img src={homepagelinkpic3} alt="Link3" />
+                        <img src="/homepagelinkpic3.png" alt="Link3" />
                     </a>
-                    <p>Pic Link Description 3</p>
+                    <p>COMPARE</p>
                 </div>
             </section>
             <footer className="homepage-footer">
                 <div>© 2024 Fantasy Basketball Notebook</div>
                 <div>
                     <a href="https://github.com/sekiyamayasuhiro/capstone-project">
-                        GitHub Repo
+                        <FaGithub size={24} />
                     </a>
                 </div>
                 <div>
-                    <a href="https://sekiyamayasuhiro.github.io">About Me</a>
-                </div>
-                <div>
-                    <a href="https://github.com/sekiyamayasuhiro">GitHub</a>
+                    <a href="https://sekiyamayasuhiro.github.io">
+                        <FaUser size={24} />
+                    </a>
                 </div>
                 <div>
                     <a href="http://www.linkedin.com/in/yasuhiro-sekiyama-86474a329">
-                        LinkedIn
+                        <FaLinkedin size={24} />
                     </a>
                 </div>
             </footer>

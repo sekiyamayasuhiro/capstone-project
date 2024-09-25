@@ -4,7 +4,6 @@ import ProfileButton from "./ProfileButton";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import logo from "../../../public/logo.png";
 import "./Navigation.css";
 
 function Navigation() {
@@ -14,7 +13,7 @@ function Navigation() {
         <div className="navigation-container">
             <div className="navigation-icon-container">
                 <NavLink to="/">
-                    <img src={logo} alt="site logo" />
+                    <img src="/logo.png" alt="site logo" />
                 </NavLink>
                 <p>FANTASY BASKETBALL NOTEBOOK</p>
             </div>
