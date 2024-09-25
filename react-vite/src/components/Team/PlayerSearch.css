@@ -1,19 +1,18 @@
-.player-search-container {
+/* .player-search-container {
     position: relative;
     width: 100%;
-}
+} */
 
-.input-field {
+/* .input-field {
     width: 100%;
     padding: 8px;
     font-size: 16px;
-}
+} */
 
-.suggestions-list {
+/* .suggestions-list {
     position: absolute;
     width: 100%;
     background: white;
-    /* border: 1px solid #ccc; */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-height: 100px;
     overflow-y: auto;
@@ -21,18 +20,18 @@
     list-style: none;
     margin-top: 0;
     padding-left: 0;
-}
+} */
 
-.suggestions-list li {
+/* .suggestions-list li {
     padding: 5px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
-}
+} */
 
-.suggestions-list li:hover {
+/* .suggestions-list li:hover {
     background-color: #f9f9f9;
-}
+} */
 
-.suggestions-list li:last-child {
+/* .suggestions-list li:last-child {
     border-bottom: none;
-}
+} */
