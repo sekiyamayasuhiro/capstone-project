@@ -30,6 +30,11 @@
     width: auto;
 }
 
+.navigation-container p {
+    font-weight: bolder;
+    font-size: larger;
+}
+
 .navigation-profile-container {
     justify-content: flex-end;
 }

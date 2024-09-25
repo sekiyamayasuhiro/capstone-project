@@ -10,6 +10,7 @@ function Navigation() {
                 <NavLink to="/">
                     <img src={logo} alt="site logo" />
                 </NavLink>
+                <p>FANTASY BASKETBALL NOTEBOOK</p>
             </div>
             <div className="navigation-profile-container">
                 <ProfileButton />
