@@ -41,3 +41,34 @@
     color: red;
     text-align: center;
 }
+
+.roster-list {
+    padding-left: 20px;
+    padding-right: 800px;
+}
+
+.roster-player {
+    color: blue;
+    cursor: pointer;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roster-player:hover {
+    color: gold;
+}
+
+.delete-player-button {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-player-button:hover {
+    background-color: black;
+}

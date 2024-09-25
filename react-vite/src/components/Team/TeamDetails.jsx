@@ -43,7 +43,8 @@ const TeamDetails = () => {
         navigate(`/players/${nbaPlayerId}`);
     };
 
-    const handleDelete = (playerId) => {
+    const handleDelete = (e, playerId) => {
+        e.stopPropagation();
         setModalContent(
             <DeletePlayerModal teamId={teamId} playerId={playerId} />
         );
@@ -75,47 +76,28 @@ const TeamDetails = () => {
                 <h1>ROSTER HERE:</h1>
                 {error && <p className="error-message">{error}</p>}
                 <PlayerSearch onPlayerSelect={handlePlayerSelect} />
-                <div>
-                    {/* <ul>
-                        {roster.map((player) => (
-                            <li key={player.nba_player_id}>
-                                {player.full_name} {player.nba_player_id}
-                                <button onClick={() => handleDelete(player.id)}>
-                                    Delete
-                                </button>
-                            </li>
-                        ))}
-                    </ul> */}
-                    {/* <ul>
-                        {roster.map((player) => (
-                            <li key={player.nba_player_id}>
-                                <Link to={`/players/${player.id}`}>
-                                    {player.full_name} {player.nba_player_id}
-                                </Link>
-                                <button onClick={() => handleDelete(player.id)}>
-                                    Delete
-                                </button>
-                            </li>
-                        ))}
-                    </ul> */}
-                    <ul>
-                        {roster.map((player) => (
-                            <li
-                                key={player.nba_player_id}
-                                onClick={() =>
-                                    handlePlayerClick(player.nba_player_id)
-                                }
+                <ul className="roster-list">
+                    {roster.map((player) => (
+                        <li
+                            key={player.nba_player_id}
+                            onClick={() =>
+                                handlePlayerClick(player.nba_player_id)
+                            }
+                            className="roster-player"
+                        >
+                            {player.full_name}
+                            <button
+                                className="delete-player-button"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDelete(e, player.id);
+                                }}
                             >
-                                {player.full_name} {player.nba_player_id}
-                                <button
-                                    onClick={(e) => handleDelete(e, player.id)}
-                                >
-                                    Delete
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                                Delete
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </section>
         </div>
     );
