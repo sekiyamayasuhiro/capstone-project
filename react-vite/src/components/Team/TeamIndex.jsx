@@ -22,20 +22,29 @@ const TeamIndex = ({ leagueId, maxPlayers, league }) => {
     };
 
     return (
-        <div>
-            <h2>Teams:</h2>
-            {teams.map((team) => (
-                <TeamCard
-                    key={team.id}
-                    team={team}
-                    leagueId={leagueId}
-                    league={league}
-                />
-            ))}
-            {teams.length < maxPlayers && (
-                <button onClick={handleCreateNewTeam}>Add New Team</button>
-            )}
-        </div>
+        <>
+            <h2 className="team-section-title">TEAMS IN THIS LEAGUE:</h2>
+            <div className="add-new-team-button-container">
+                {teams.length < maxPlayers && (
+                    <button
+                        onClick={handleCreateNewTeam}
+                        className="create-team-button"
+                    >
+                        Add New Team
+                    </button>
+                )}
+            </div>
+            <div className="team-cards-container">
+                {teams.map((team) => (
+                    <TeamCard
+                        key={team.id}
+                        team={team}
+                        leagueId={leagueId}
+                        league={league}
+                    />
+                ))}
+            </div>
+        </>
     );
 };
 

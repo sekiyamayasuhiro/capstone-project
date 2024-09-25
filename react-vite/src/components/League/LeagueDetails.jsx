@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TeamIndex from "../Team/TeamIndex";
+import "./LeagueDetails.css";
 
 const LeagueDetails = () => {
     const { leagueId } = useParams();
@@ -29,7 +30,7 @@ const LeagueDetails = () => {
                     <p>Max Players: {league.max_players}</p>
                 </div>
             </div>
-            <div className="league-details-lower">
+            <div className="league-teams-section">
                 <TeamIndex
                     leagueId={leagueId}
                     maxPlayers={league.max_players}

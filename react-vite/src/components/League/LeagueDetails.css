@@ -1,0 +1,62 @@
+.league-details-upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.league-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 25px;
+}
+
+.league-details-info {
+    flex: 1;
+}
+
+.league-details-info h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.league-details-info p {
+    font-size: 1rem;
+}
+
+.add-new-team-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+}
+
+.create-team-button {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.create-team-button:hover {
+    background-color: gold;
+}
+
+.league-team-section {
+    padding: 20px;
+}
+
+.team-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}

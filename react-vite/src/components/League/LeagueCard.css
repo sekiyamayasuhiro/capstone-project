@@ -4,6 +4,16 @@
     margin: 20px;
     width: 250px;
     box-shadow: 0 0 5px black;
+    text-align: center;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.league-card:hover {
+    cursor: pointer;
 }
 
 .league-image {
@@ -17,6 +27,11 @@
 
 .league-details {
     margin-top: 20px;
+}
+
+.league-card p {
+    height: 60px;
+    /* overflow: hidden; */
 }
 
 .edit-delete-league-section {
