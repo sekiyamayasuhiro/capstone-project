@@ -48,7 +48,7 @@ function LoginFormModal({ redirectPath = "/" }) {
             <h1>Log In</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Email
+                    Email:
                     <input
                         type="text"
                         value={email}
@@ -58,7 +58,7 @@ function LoginFormModal({ redirectPath = "/" }) {
                 </label>
                 {errors.email && <p>{errors.email}</p>}
                 <label>
-                    Password
+                    Password:
                     <input
                         type="password"
                         value={password}
@@ -69,7 +69,7 @@ function LoginFormModal({ redirectPath = "/" }) {
                 {errors.password && <p>{errors.password}</p>}
                 <button type="submit">Log In</button>
                 <button onClick={demoUser}>Demo User</button>
-                <button onClick={demoUserTwo}>Demo User 2</button>
+                {/* <button onClick={demoUserTwo}>Demo User 2</button> */}
             </form>
         </>
     );

@@ -1,0 +1,45 @@
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    font-weight: bolder;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: block;
+    width: 97%;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bolder;
+}
+
+form button:hover {
+    background-color: gold;
+}
+
+form p {
+    color: red;
+    font-size: 1rem;
+    margin-top: -10px;
+}
