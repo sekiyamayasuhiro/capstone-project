@@ -46,9 +46,14 @@
 
 .profile-dropdown div button {
     background: none;
-    border-radius: 0%;
+    border-radius: 0;
     padding: 5;
     cursor: pointer;
+    width: 100%;
+    text-align: center;
+    color: blue;
+    border-color: blue;
+    font-weight: bolder;
 }
 
 .navigation-container {
